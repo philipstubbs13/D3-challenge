@@ -51,7 +51,7 @@ export const renderYAxis = (newYScale, yAxis) => {
 export const renderCircles = (circlesGroup, newXScale, chosenXAxis, newYScale, chosenYAxis) => {
 
   circlesGroup.transition()
-    .duration(1000)
+    .duration(2000)
     .attr("cx", d => newXScale(d[chosenXAxis]))
     .attr("cy", d => newYScale(d[chosenYAxis]))
 
@@ -69,13 +69,25 @@ export const updateToolTip = (chosenXAxis, chosenYAxis, circlesGroup) => {
     .attr("class", "d3-tip")
     .offset([80, -60])
     .html(function(d) {
-      return (`${d.abbr}<br>${xLabel} ${d[chosenXAxis]}<br>${yLabel} ${d[chosenYAxis]}`);
+      return (`${d.state}<br>${xLabel} ${d[chosenXAxis]}<br>${yLabel} ${d[chosenYAxis]}`);
     });
 
   circlesGroup.call(toolTip);
 
-  circlesGroup.on("mouseover", function(d) { toolTip.show(d, this); })
+  circlesGroup.on("mouseover", function(d) { 
+    // d3.select(this)
+    //   .transition()
+    //   .duration(1000)
+    //   .attr("r", 20)
+    //   .attr("fill", "lightblue");
+    toolTip.show(d, this);
+  })
     .on("mouseout", function(data, index) {
+      // d3.select(this)
+      //   .transition()
+      //   .duration(1000)
+      //   .attr("r", 10)
+      //   .attr("fill", "blue");
       toolTip.hide(data);
     });
 
@@ -133,4 +145,15 @@ export const createYAxisLabel = (yaxisLabelsGroup, margin, y, chartHeight, value
     .text(text);
 
   return label;
+}
+
+// Function used to render/update the states circle text.
+export const renderCirclesText = (circlesText, newXScale, newYScale, chosenXAxis, chosenYAxis) => {
+  circlesText
+      .transition()
+      .duration(3000)
+      .attr("x", d => newXScale(d[chosenXAxis]))
+      .attr("y", d => newYScale(d[chosenYAxis]))
+
+  return circlesText;
 }

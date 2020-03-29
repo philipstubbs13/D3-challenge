@@ -1,5 +1,5 @@
 import * as d3 from 'd3';
-import { xScale, yScale, renderXAxis, renderYAxis, renderCircles, updateToolTip, createXAxisLabel, createYAxisLabel } from './utils';
+import { xScale, yScale, renderXAxis, renderYAxis, renderCircles, updateToolTip, createXAxisLabel, createYAxisLabel, renderCirclesText } from './utils';
 import { axisLabels, svgHeight, svgWidth, margin, chartHeight, chartWidth } from './constants';
 
 export const drawScatterPlot = (csvData) => {
@@ -55,9 +55,22 @@ export const drawScatterPlot = (csvData) => {
       .append("circle")
       .attr("cx", d => xLinearScale(d[chosenXAxis]))
       .attr("cy", d => yLinearScale(d[chosenYAxis]))
-      .attr("r", "10")
+      .attr("r", "15")
       .attr("fill", "blue")
       .attr("opacity", ".5")
+
+    let circlesText = chartGroup.selectAll("text.text-circles")
+     .data(data)
+     .enter()
+     .append("text")
+     .classed("text-circles",true)
+     .text(d => d.abbr)
+     .attr("x", d => xLinearScale(d[chosenXAxis]))
+     .attr("y", d => yLinearScale(d[chosenYAxis]))
+     .attr("dy",5)
+     .attr("text-anchor","middle")
+     .attr("font-size","10px")
+
 
     // Create group for x-axis labels.
     const xaxisLabelsGroup = chartGroup.append("g")
@@ -80,6 +93,7 @@ export const drawScatterPlot = (csvData) => {
     // Create/update tooltip for each circle in the circles group.
     circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup);
 
+
     // Event listener for when an x-axis label is clicked.
     xaxisLabelsGroup.selectAll("text")
       .on("click", function() {
@@ -98,6 +112,9 @@ export const drawScatterPlot = (csvData) => {
 
           // updates circles with new x values.
           circlesGroup = renderCircles(circlesGroup, xLinearScale, chosenXAxis, yLinearScale, chosenYAxis);
+
+          // Updates circles text.
+          circlesText = renderCirclesText(circlesText, xLinearScale, yLinearScale, chosenXAxis, chosenYAxis);
 
           // Updates tooltips with new info.
           circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup);
@@ -172,6 +189,9 @@ export const drawScatterPlot = (csvData) => {
 
             // Updates tooltips with new info.
             circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup);
+
+            // Updates circles text.
+            circlesText = renderCirclesText(circlesText, xLinearScale, yLinearScale, chosenXAxis, chosenYAxis);
 
             // Change classes to change bold text for y-axis labels.
             switch(chosenYAxis) {

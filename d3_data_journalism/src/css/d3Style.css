@@ -24,7 +24,7 @@
 }
 
 /* font size dependent on radius, see app.js */
-.stateText {
+.text-circles {
   font-family: sans-serif;
   fill: #fff;
   text-anchor: middle;
@@ -61,7 +61,7 @@
 
 /* Mobile Rules */
 @media screen and (max-width: 530px) {
-  .stateText {
+  .text-circles {
     display: none;
   }
 
