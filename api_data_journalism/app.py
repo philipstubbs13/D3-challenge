@@ -1,11 +1,11 @@
-from flask import Flask, render_template
+from flask import Flask, Blueprint, render_template
 
 # Create an instance of Flask
-app = Flask(__name__.split('.')[0], static_folder='../d3_data_journalism/build/static', template_folder="../d3_data_journalism/build")
+app = Flask(__name__.split('.')[0], static_url_path='', static_folder='client/build')
 
 @app.route("/")
 def home():
-  return render_template("index.html")
+  return app.send_static_file('index.html')
 
 
 @app.route('/time')
