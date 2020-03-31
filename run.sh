@@ -1,0 +1,1 @@
+FLASK_APP=api_data_journalism/app.py flask run
