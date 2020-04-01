@@ -1,1 +1,0 @@
-web: gunicorn api_data_journalism.app:app

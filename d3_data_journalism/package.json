@@ -2,11 +2,7 @@
   "name": "d3_data_journalism",
   "version": "0.1.0",
   "private": true,
-   "proxy": "http://localhost:5000",
   "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
     "d3": "^5.15.0",
     "d3-tip": "^0.9.1",
     "react": "^16.13.1",

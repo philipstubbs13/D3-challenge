@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import './css/d3Style.css';
 import './css/style.css';
 import { drawScatterPlot } from './js/app.js';
@@ -10,13 +10,6 @@ function App() {
     drawScatterPlot(csvData);
   }, [])
 
-  const [currentTime, setCurrentTime] = useState(0);
-
-  useEffect(() => {
-    fetch('/time').then(res => res.json()).then(data => {
-      console.log(data)
-    });
-  }, []);
   return (
     <div className="container">
       <div className="row">
