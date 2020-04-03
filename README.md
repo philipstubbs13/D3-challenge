@@ -1,4 +1,4 @@
-# D3-challenge
+# D3 Challenge
 
 This repository includes a scatter plot visualization, which was built using the D3 JavaScript library and is currently deployed [here](https://d3-data-journalism-9cb59.web.app/). The D3 code is available [here](./d3_data_journalism/src/js) inside this repository.
 
