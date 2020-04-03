@@ -1,3 +1,11 @@
+.svg {
+    display:none;
+}
+
+.svg:first-of-type{  
+    display : block;
+}
+
 .aText {
   font-family: sans-serif;
   font-size: 16px;

@@ -12,8 +12,11 @@ export const drawScatterPlot = (csvData) => {
   // and shift the latter by left and top margins.
   const svg = d3.select("#scatter")
     .append("svg")
-    .attr("width", svgWidth)
-    .attr("height", svgHeight)
+    .attr("class", "svg")
+    .attr("viewBox", `0 0 ${svgWidth} ${svgHeight}`)
+  // using viewBox is what makes the svg/chart responsive:
+  // https://medium.com/@louisemoxy/a-simple-way-to-make-d3-js-charts-svgs-responsive-7afb04bc2e4b
+
 
   // Append an SVG group.
   const chartGroup = svg.append("g")
@@ -243,3 +246,7 @@ export const drawScatterPlot = (csvData) => {
         });
   }).catch((error) => console.log(error));
 }
+
+// Event listener for window resize.
+// When the browser window is resized, drawScatterPlot() is called.
+d3.select(window).on("resize", drawScatterPlot);

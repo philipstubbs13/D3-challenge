@@ -10,7 +10,7 @@ export default function App() {
     drawScatterPlot(csvData);
   }, [])
 
-  return (
+  return (   
     <div className="container">
       <div className="row">
         <div className="col-xs-12 col-md-12 d-flex justify-content-center mt-5">
@@ -18,11 +18,7 @@ export default function App() {
           <br></br>
         </div>
       </div>
-      <div className="row">
-        <div className="col-xs-12  col-md-9 mt-5">
-          <div id="scatter">
-          </div>
-        </div>
+      <div id="scatter">
       </div>
       <div className="row d-flex justify-content-center">
         <div className="col-xs-12  col-md-9 mt-4">
