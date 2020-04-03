@@ -14,7 +14,7 @@ export const margin = {
   top: 20,
   right: 40,
   bottom: 100,
-  left: 95
+  left: 190
 };
 
 export const chartWidth = svgWidth - margin.left - margin.right;

@@ -86,9 +86,9 @@ export const drawScatterPlot = (csvData) => {
       .attr("transform", "rotate(-90)")
 
     // Create the y-axis labels.
-    const healthcareLabel = createYAxisLabel(yaxisLabelsGroup, margin, 50, chartHeight, axisLabels.healthcare, "active", true, "Lacks Healthcare (%)");
-    const obesityLabel = createYAxisLabel(yaxisLabelsGroup, margin, 30, chartHeight, axisLabels.obesity, "inactive", true, "Obese (%)");
-    const smokesLabel = createYAxisLabel(yaxisLabelsGroup, margin, 10, chartHeight, axisLabels.smokes, "inactive", true, "Smokes (%)");
+    const healthcareLabel = createYAxisLabel(yaxisLabelsGroup, margin, 125, chartHeight, axisLabels.healthcare, "active", true, "Lacks Healthcare (%)");
+    const obesityLabel = createYAxisLabel(yaxisLabelsGroup, margin, 100, chartHeight, axisLabels.obesity, "inactive", true, "Obese (%)");
+    const smokesLabel = createYAxisLabel(yaxisLabelsGroup, margin, 75, chartHeight, axisLabels.smokes, "inactive", true, "Smokes (%)");
 
     // Create/update tooltip for each circle in the circles group.
     circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup);
